@@ -1,10 +1,12 @@
 import { ContactController } from "../controller/controller";
 import {Request, Response} from "express";
+import express = require("express");
+
 
 export class Routes{
 
     public contactController : ContactController = new ContactController()
-    public routes(app: any): void{
+    public routes(app:express.Application): void{
         
         app.route('/')
         .get((req:Request,res:Response)=>{
@@ -20,7 +22,7 @@ export class Routes{
         .post(this.contactController.addNewContact)
 
 
-        app.route('/contact/contactId')
+        app.route('/contact/:contactId')
         //get specific contact
         .get(this.contactController.getContactWithID)
         .put(this.contactController.updateContact)

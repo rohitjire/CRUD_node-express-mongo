@@ -8,13 +8,16 @@ export class ContactController{
 
     public addNewContact(req:Request, res: Response){
 
-        let newContact = new Contact(req.body);
-
-        newContact.save((err:any, contact:any) =>{
+        const newContact = new Contact(req.body);
+        
+        
+        
+        newContact.save((err:any,contact:any) =>{
             if(err){
                 res.send(err);
             }
             res.json(contact)
+ 
         })
     }
 
@@ -25,6 +28,7 @@ export class ContactController{
                 res.send(err)
             }
             res.json(contact)
+
         })
         
     }
@@ -37,6 +41,7 @@ export class ContactController{
                 res.send(err);
             }
             res.json(contact);
+            console.log(contact)
         })
     }
 
