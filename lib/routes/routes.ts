@@ -1,7 +1,9 @@
+import { ContactController } from "../controller/controller";
 import {Request, Response} from "express";
 
 export class Routes{
 
+    public contactController : ContactController = new ContactController()
     public routes(app: any): void{
         
         app.route('/')
@@ -13,36 +15,16 @@ export class Routes{
 
         app.route('/contact')
         // get endpoint
-        .get((req:Request,res: Response)=>{
-            res.status(200).send({
-                message: "GET request successfull"
-            })
-        })
+        .get(this.contactController.getContacts)
         // post endpoint
-        .post((req:Request,res: Response) => {
-            res.status(200).send({
-                message: "POST request successfull"
-            })
-        })
+        .post(this.contactController.addNewContact)
 
 
         app.route('/contact/contactId')
         //get specific contact
-        .get((req: Request, res: Response)=>{
-            res.status(200).send({
-                message: "Get Specific request successfull"
-            })
-        })
-        .put((req: Request, res: Response)=>{
-            res.status(200).send({
-                message: "Update Specific request successfull"
-            })
-        })
-        .delete((req:Request, res: Response) => {
-            res.status(200).send({
-                message: "Delete specific request successfull"
-            })
-        })
+        .get(this.contactController.getContactWithID)
+        .put(this.contactController.updateContact)
+        .delete(this.contactController.deleteContact)
     }
 
 }

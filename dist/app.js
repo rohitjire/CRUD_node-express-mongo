@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const express = require("express");
-const routes_1 = require("routes/routes");
+const routes_1 = require("./routes/routes");
 class App {
     constructor() {
         this.routePrv = new routes_1.Routes();
